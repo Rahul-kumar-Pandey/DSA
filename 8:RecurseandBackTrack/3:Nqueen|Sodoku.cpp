@@ -61,3 +61,21 @@ bool solveSudoku(vector < vector < char >> & board) {
   }
   return true;
 }
+------------------------------------------------------------------------------
+//M-coloring problem
+ bool solve(int node,unordered_map<int,vector<int>>&graph,int m,vector<int>&colors,int v){
+        if(node==v) return true;
+        
+        for(int c=1;c<=m;c++){
+            if(safe(c,node,graph,colors)){
+                colors[node]=c;
+                if(solve(node+1,graph,m,colors,v)) return true;
+                colors[node]=-1;
+            }
+        }
+        return false;
+    }
+main(){
+ if(solve(0,graph,m,colors,v)) return true;
+ return false;
+}
