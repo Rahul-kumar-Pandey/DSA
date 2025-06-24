@@ -10,22 +10,15 @@ Output: 5
   Auxiliary Space: O(1)
 */
 int upperBound(vector<int> &arr, int x, int n) {
-    int low = 0, high = n - 1;
-    int ans = n;
-
-    while (low <= high) {
-        int mid = (low + high) / 2;
-        // maybe an answer
-        if (arr[mid] > x) {
-            ans = mid;
-            //look for smaller index on the left
-            high = mid - 1;
+    int lo=0,hi=arr.size()-1;
+        while(lo<=hi){
+            int mid=(lo+hi)/2;
+            if(arr[mid]<=x){
+                lo=mid+1;
+            }
+            else hi=mid-1;
         }
-        else {
-            low = mid + 1; // look on the right
-        }
-    }
-    return ans;
+        return lo;
 }
 
 int countSmallEqual(vector<vector<int>> &matrix, int m, int n, int x) {
