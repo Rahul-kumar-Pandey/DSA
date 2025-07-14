@@ -21,3 +21,24 @@ vector<int> inorderTraversal(TreeNode* root) {
         }
         return ans;
     }
+
+//Preorder Traversal
+/*
+1) root left right
+*/
+ vector<int> preorderTraversal(TreeNode* root) {
+        if(root==NULL) return {};
+        vector<int>ans;
+        TreeNode * curr=root;
+        stack<TreeNode*>st;
+        st.push(curr);
+        while(!st.empty()){
+            curr=st.top();
+            st.pop();
+            ans.push_back(curr->val);
+            if(curr->right) st.push(curr->right);
+            if(curr->left) st.push(curr->left);
+        }
+        return ans;
+    }
+//postorder Traversal
