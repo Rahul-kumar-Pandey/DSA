@@ -41,4 +41,36 @@ vector<int> inorderTraversal(TreeNode* root) {
         }
         return ans;
     }
-//postorder Traversal
+//postorder Traversal(using 2 stack)
+/*
+1) take 2 stacks s1 and s2
+2) s1.push(root)
+3) in each iteration 
+        a) take out top from s1 and push in s2
+        b) push left then right in s1
+4) at last s2 will contain postorder traversal.
+*/
+
+
+//postorder Traversal( using 1 stack)
+while(curr!=null or !st.empty()){
+        if(curr){
+                st.push(curr);
+                curr=curr->left;
+        }
+        else{
+                temp=st.top()->right;
+                if(temp==NULL){
+                        temp=st.top();
+                        st.pop();
+                        cout<<temp->data<<endl; //print
+                        //this handles right skewed tree
+                        while(!st.empty() && temp==st.top()->right){ 
+                                temp=st.top();
+                                st.pop();
+                                cout<<temp->data<<endl; //print 
+                        }
+                }
+                else curr=temp;
+        }
+}
