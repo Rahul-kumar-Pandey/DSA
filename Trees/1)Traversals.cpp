@@ -74,3 +74,39 @@ while(curr!=null or !st.empty()){
                 else curr=temp;
         }
 }
+
+//Morris Inorder
+/*
+1) use threaded binary tree
+2) if left ==null then print(root) and go right
+3) if left !=null then make a thread from (rightmost node in left)-->root
+4) if thread already exists for case 3 then remove it and go right
+TC: O(n) ,SC:O(1)
+*/
+curr=root;
+while(curr){
+        if(curr->left==NULL){
+                print(curr->val);
+                curr=curr->right;
+        }
+        else{
+                //going till right most node in left 
+                prev=curr->left;
+                while(prev->right && prev->right!=curr){
+                        prev=prev->right;
+                }
+                //make a thread
+                if(prev->right==NULL){
+                        prev->right=curr;
+                        curr=curr->left;
+                }
+                //remove thread
+                else{
+                        prev->right=NULL;
+                        print(curr->val);
+                        curr=curr->right;
+                }
+        }
+}
+
+//NOTE: for preorder just place line no 106(print statement) after line no 100.
