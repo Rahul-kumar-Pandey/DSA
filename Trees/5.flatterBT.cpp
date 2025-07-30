@@ -29,4 +29,20 @@ Approach2:
     }
 
 Approach3:(moris), TC:O(N) sc:O(1)
-  
+  /*
+  1)as linked list order should be of preorder traversal of binary tree
+  2) root->(leftsubtree)->(rightsubtree)
+  */
+     curr=root;
+     while(curr!=null){
+          if(curr->left!=NULL){
+               prev=curr->left;
+               //find rightmost node of root's left
+               while(prev->right){
+                    prev=prev->right;
+               }
+               prev->right=curr->right;
+               curr->right=curr->left;
+          }
+          curr=curr->right;
+     }
