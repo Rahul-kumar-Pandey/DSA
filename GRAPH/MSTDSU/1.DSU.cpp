@@ -8,6 +8,7 @@ DSU -> constant time
 ##find() -> finds parent of a node
 ##union() -> does union of two nodes
 */
+//union by size
 union(int a,int b){
   a=find(a);
   b=find(b);
