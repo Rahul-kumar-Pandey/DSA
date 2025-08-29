@@ -11,6 +11,7 @@ Given an undirected and connected graph
 //----------------------------PRIM's ALGORITHM--------------------------
 //preparation:minheap, visited array, mst array(optional) which stores mst edges
 //minheap stores {wt,node}
+//O((V+E)logV) because each edge is inserted in the priority queue only once and insertion in priority queue take logarithmic time.
 int spanningTree(int V, vector<vector<int>> adj[])
 	{
 		priority_queue<pair<int, int>,
